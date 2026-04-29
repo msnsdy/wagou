@@ -1,0 +1,17 @@
+name = "wagou"
+# ↑ Cloudflare上でのプロジェクト名
+
+compatibility_date = "2025-04-29"
+# ↑ Cloudflareの機能バージョンを固定する日付
+
+compatibility_flags = ["nodejs_compat"]
+# ↑ Node.jsの機能を使えるようにするフラグ
+
+main = ".open-next/worker.js"
+# ↑ OpenNextがビルドしたファイルの場所
+
+[assets]
+directory = ".open-next/assets"
+# ↑ 画像やCSSなど静的ファイルの場所
+binding = "ASSETS"
+# ↑ Workerから静的ファイルを参照するための名前
