@@ -1,10 +1,21 @@
+"use client";
+
 import Button from "@/components/ui/Button";
 import ButtonOutline from "@/components/ui/ButtonOutline";
 import Heading from "@/components/ui/Heading";
+import HamburgerIcon from "@/components/ui/HamburgerIcon";
+import { useState } from "react";
 
 import styles from "./component.module.css";
 
 export default function Component() {
+  // [現在の状態, 状態を更新する関数名] = useState(初期値);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen); // isOpenの状態を反転させる
+  };
+
   return (
     <>
       <main className={styles.main}>
@@ -19,6 +30,8 @@ export default function Component() {
           <h2>見出し</h2>
           <Heading text="見出し"></Heading>
         </section>
+
+        <HamburgerIcon isOpen={isOpen} onClick={toggleMenu} />
       </main>
     </>
   );
