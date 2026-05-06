@@ -1,0 +1,9 @@
+.main {
+  margin: 40px;
+}
+
+.section {
+  margin-bottom: 60px;
+  border: solid 2px #333;
+  padding: 30px;
+}
