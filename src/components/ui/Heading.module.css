@@ -1,0 +1,31 @@
+.heading {
+  display: grid;
+  place-items: center;
+  row-gap: 16px;
+
+  @media (width >= 768px) {
+    row-gap: 40px;
+  }
+}
+
+.heading__leaf {
+  display: block;
+  max-width: 70px;
+  width: 100%;
+
+  @media (width >= 768px) {
+    max-width: 100px;
+  }
+}
+
+.heading__main {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 12%;
+
+  @media (width >= 768px) {
+    font-size: 26px;
+    line-height: 26px;
+  }
+}
