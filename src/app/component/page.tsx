@@ -31,7 +31,7 @@ export default function Component() {
           <Heading text="見出し"></Heading>
         </section>
 
-        <HamburgerIcon isOpen={isOpen} onClick={toggleMenu} />
+        <HamburgerIcon isOpen={isOpen} isHide={true} onClick={toggleMenu} />
       </main>
     </>
   );

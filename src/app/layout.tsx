@@ -1,6 +1,8 @@
 import { Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 
+import Header from "@/components/layout/Header";
+
 const notoSerifJp = Noto_Serif_JP({
   weight: ["400", "500", "600", "700"],
   variable: "--font-noto-serif-jp",
@@ -14,8 +16,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${notoSerifJp.variable} `}>
-      <body>{children}</body>
+    <html lang="ja" className={`${notoSerifJp.variable} `}>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

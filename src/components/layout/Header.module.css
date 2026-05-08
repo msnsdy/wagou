@@ -1,0 +1,95 @@
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--index-header);
+  padding: 10px 20px 10px 14px;
+  
+  &.is-open {
+  }
+  
+  @media (width >= 768px) {
+    padding: 20px;
+  }
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 0;
+  position: relative;
+}
+
+.content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100svh;
+  background: url(/common/bg.webp) no-repeat center center / cover;
+  padding: 90px 28px 30px;
+  z-index: var(--index-header-content);
+  text-align: right;
+  transform: translateX(100%);
+  transition: transform 0.3s;
+
+  .isOpen & {
+    transform: translateX(0);
+  }
+}
+
+.logoLink {
+  display: inline-block;
+}
+
+.logo {
+  display: block;
+  width: 60px;
+
+  @media (width >= 768px) {
+    width: 100px;
+  }
+}
+
+.logoContent {
+  display: block;
+  width: 100px;
+}
+
+.nav {
+  margin-top: 30px;
+}
+
+.item:not(:first-child) {
+  margin-top: 20px;
+}
+
+.link {
+  font-weight: 700;
+  line-height: 40px;
+  display: inline-block;
+  transition: color 0.3s;
+
+  &:focus-visible {
+    color: #8b1c1a;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: #8b1c1a;
+    }
+  }
+}
+
+.hamburger {
+  position: absolute;
+  top: 10px;
+  right: 0;
+
+  @media (width >= 768px) {
+    top: 0;
+  }
+}
