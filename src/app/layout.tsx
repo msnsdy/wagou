@@ -2,6 +2,7 @@ import { Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const notoSerifJp = Noto_Serif_JP({
   weight: ["400", "500", "600", "700"],
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
