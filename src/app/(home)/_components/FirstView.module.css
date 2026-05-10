@@ -126,6 +126,13 @@
   opacity: 1;
 }
 
+.slideImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 990 / 737;
+  object-fit: cover;
+}
+
 .copy {
   position: absolute;
   right: 200px;
@@ -178,4 +185,11 @@
   @media (width >= 768px) {
     width: 200px;
   }
+}
+
+.copyIllust {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 200 / 130;
+  object-fit: cover;
 }
