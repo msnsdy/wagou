@@ -11,7 +11,7 @@ export default function MenuSection() {
     {
       src: "/top/menu-image01.webp",
       title: "さえみどり",
-      text: "天然玉露ともいわれるほど、旨みのある煎茶です。<br>一煎一煎と淹れるびに、鮮やかになっていき、<br>お茶の色味とともに味わい深くなっていきます。",
+      text: "天然玉露ともいわれるほど、旨みのある煎茶です。\n一煎一煎と淹れるびに、鮮やかになっていき、\nお茶の色味とともに味わい深くなっていきます。",
       commandfor: "menu01",
     },
     {

@@ -1,13 +1,19 @@
 .modal {
   padding: 60px 25px 25px;
   border-radius: 20px;
+
+  @media (width >= 768px) {
+    padding: 70px 40px 25px;
+  }
 }
 
 .image {
+  max-width: 300px;
+  margin-inline: auto;
   width: 100%;
   aspect-ratio: 300 / 225;
   object-fit: cover;
-  padding: 0 20px;
+  border-radius: 16px;
 }
 
 .title {
@@ -22,7 +28,7 @@
   line-height: 30px;
   margin-top: 14px;
   text-align: center;
-  padding: 0 10px;
+  white-space: pre-wrap;
 }
 
 .button {
@@ -49,7 +55,7 @@
 }
 
 .button::before,
-.button::after{
+.button::after {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   content: "";

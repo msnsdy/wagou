@@ -61,6 +61,7 @@
   border-radius: 20px;
   padding: 0;
   max-width: calc(390 / 440 * 100%);
+  width: 100%;
   overscroll-behavior-block: contain;
   transition-duration: 300ms;
   transition-property: display, overlay, opacity;
