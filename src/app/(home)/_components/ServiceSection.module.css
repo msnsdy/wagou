@@ -1,0 +1,96 @@
+.topService {
+  padding: 120px 0;
+  z-index: 1;
+  position: relative;
+  @media (width >= 768px) {
+    padding: 100px 0 50px;
+  }
+}
+
+.container {
+  padding: 0 20px;
+  margin-top: 57px;
+  @media (width >= 768px) {
+    padding: 0;
+  }
+}
+
+.wrapper {
+  margin-top: 57px;
+  display: grid;
+  gap: 57px 32px;
+  @media (width >= 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: calc(984px + 40px);
+    margin-inline: auto;
+    padding: 0 20px;
+  }
+}
+
+.meditaion {
+  margin-top: 40px;
+  padding: 70px 0 50px;
+  background: url(/common/bg.webp) no-repeat center center / cover;
+  border-radius: 100px 10px 100px 10px;
+  @media (width >= 768px) {
+    max-width: 966px;
+    margin-inline: auto;
+    padding: 40px 0 24px;
+    position: relative;
+  }
+}
+
+.meditaionHeading {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 12%;
+  line-height: 25px;
+}
+
+.meditaionLead {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 12%;
+  line-height: 25px;
+  margin-top: 16px;
+}
+
+.meditaionWrapper {
+  display: grid;
+  gap: 20px 24px;
+  /* max-width: 262px; */
+  width: 100%;
+  margin: 28px auto 0;
+  padding: 0 68px;
+  @media (width >= 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.meditationButton {
+  max-width: 200px;
+  margin: 42px auto 0;
+  @media (width >= 768px) {
+    margin-top: 18px;
+  }
+}
+
+.meditaionIllustWrap {
+  position: absolute;
+  width: 190px;
+  height: 142px;
+  bottom: 52px;
+  right: 0;
+  @media (width >= 768px) {
+    bottom: 0;
+    right: -70px;
+  }
+}
+
+.meditaionIllust {
+  aspect-ratio: 190 / 140;
+  width: 100%;
+  object-fit: cover;
+}
