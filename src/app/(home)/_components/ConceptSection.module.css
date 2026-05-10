@@ -1,0 +1,144 @@
+.topConcept {
+  position: relative;
+  padding: 50px 0 410px;
+  overflow: hidden;
+  @media (width >= 768px) {
+    padding: 0;
+  }
+}
+
+.content {
+  padding: 0 20px;
+  @media (width >= 768px) {
+    padding: 0;
+  }
+}
+
+.imageWrap1,
+.imageWrap2,
+.imageWrap3,
+.imageWrap4 {
+  position: absolute;
+}
+
+.imageWrap1 {
+  width: 100%;
+  max-width: 450px;
+  bottom: -40px;
+  left: -100px;
+  z-index: 1;
+  @media (width >= 768px) {
+    bottom: initial;
+    max-width: 350px;
+  }
+  @media (width >= 1024px) {
+    max-width: 450px;
+    left: -100px;
+  }
+  @media (width >= 1280px) {
+    max-width: 556px;
+    top: 0;
+    left: 0;
+  }
+}
+
+.imageWrap2 {
+  width: 550px;
+  bottom: -130px;
+  right: -160px;
+  @media (width >= 768px) {
+    top: -10px;
+    right: -150px;
+    max-width: 450px;
+  }
+  @media (width >= 1024px) {
+    max-width: 550px;
+  }
+
+  @media (width >= 1280px) {
+    max-width: 639px;
+    right: -40px;
+  }
+}
+
+.imageWrap3 {
+  width: 100%;
+  display: none;
+  @media (width >= 768px) {
+    display: block;
+    top: 380px;
+    max-width: 380px;
+    left: -100px;
+  }
+  @media (width >= 1024px) {
+    max-width: 480px;
+  }
+  @media (width >= 1280px) {
+    max-width: 516px;
+    left: 0;
+  }
+}
+
+.imageWrap4 {
+  width: 100%;
+  display: none;
+  @media (width >= 768px) {
+    display: block;
+    top: 380px;
+    right: -150px;
+    max-width: 480px;
+  }
+  @media (width >= 1024px) {
+    max-width: 530px;
+  }
+  @media (width >= 1280px) {
+    max-width: 597px;
+    right: 0;
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.heading {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 36px;
+  color: var(--primary-color);
+}
+
+.text {
+  text-align: center;
+  font-weight: 700;
+  line-height: 36px;
+  font-size: 15px;
+  margin-top: 40px;
+  @media (width >= 768px) {
+    margin-top: 46px;
+    font-size: 16px;
+  }
+
+  .isSp {
+    @media (width >= 768px) {
+      display: none;
+    }
+  }
+}
+
+.illustWrap {
+  width: 190px;
+  margin: 28px auto 0;
+  @media (width >= 768px) {
+    margin-top: 40px;
+  }
+}
+
+.illust {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 190 / 140;
+  object-fit: cover;
+}
