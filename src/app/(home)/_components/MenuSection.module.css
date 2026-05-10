@@ -1,0 +1,92 @@
+.topMenu {
+  padding: 50px 0 136px;
+  position: relative;
+  @media (width >= 768px) {
+    padding: 100px 0 50px;
+  }
+}
+
+.lead {
+  font-size: 15px;
+  line-height: 25px;
+  letter-spacing: 12%;
+  text-align: center;
+  margin-top: 50px;
+  @media (width >= 768px) {
+    margin-top: 40px;
+  }
+}
+
+.container {
+  margin: 50px auto 0;
+  padding: 0 70px;
+  display: grid;
+  gap: 30px;
+  position: relative;
+  @media (width >= 768px) {
+    max-width: calc(984px + 40px);
+    margin: 60px auto 0;
+    grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+    padding: 0 20px;
+  }
+}
+
+.illustWrap {
+  position: absolute;
+  left: 20px;
+  bottom: -92px;
+  width: 90px;
+  height: 108px;
+  @media (width >= 768px) {
+    width: 102px;
+    height: 122px;
+    bottom: calc(100% + 28px);
+    left: 30px;
+  }
+  @media (width >= 900px) {
+    left: 188px;
+  }
+}
+
+.illust {
+  width: 100%;
+  aspect-ratio: 112 / 120;
+  object-fit: cover;
+}
+
+.modal {
+  position: fixed; /* Safariで表示に不具合があるので明示する */
+  inset: 0; /* Safariで表示に不具合があるので明示する */
+  border: none;
+  border-radius: 20px;
+  padding: 0;
+  max-width: calc(390 / 440 * 100%);
+  overscroll-behavior-block: contain;
+  transition-duration: 300ms;
+  transition-property: display, overlay, opacity;
+  transition-timing-function: ease-out;
+  transition-behavior: allow-discrete;
+  @media (width >= 768px) {
+    max-width: 500px;
+  }
+
+  &::backdrop {
+    background-color: rgb(0 0 0 / 0.15);
+    backdrop-filter: blur(4px);
+    transition-duration: inherit;
+    transition-property: opacity;
+    transition-timing-function: inherit;
+  }
+
+  &:modal,
+  &:modal::backdrop {
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  &:not(:modal),
+  &:not(:modal)::backdrop {
+    opacity: 0;
+  }
+}
