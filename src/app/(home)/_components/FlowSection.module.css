@@ -1,0 +1,142 @@
+.topFlow {
+  overflow: hidden;
+  padding: 50px 0 46px;
+  @media (width >= 768px) {
+    padding: 100px 0 50px;
+  }
+}
+
+.lead {
+  margin-top: 50px;
+  font-size: 15px;
+  line-height: 30px;
+  text-align: center;
+  @media (width >= 768px) {
+    margin-top: 40px;
+  }
+
+  br.isSp {
+    @media (width >= 768px) {
+      display: none;
+    }
+  }
+}
+
+.slider {
+  position: relative;
+  margin-top: 25px;
+  @media (width >= 768px) {
+    margin-top: 60px;
+  }
+}
+
+.slider :global(.swiper) {
+  position: relative;
+  padding: 0 20px 24px 20px;
+  @media (width >= 768px) {
+    overflow: visible;
+    padding: 0 20px 24px clamp(20px, calc((100vw - 1000px) / 2), 220px);
+  }
+}
+
+.slider :global(.swiper-slide) {
+  height: auto;
+  /* max-width: 311px; */
+  width: 75%;
+  @media (width >= 768px) {
+    max-width: 643px;
+    width: 100%;
+  }
+}
+
+.card {
+  height: 100%;
+}
+
+.controller {
+  position: relative;
+  max-width: 425px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 26px auto 0;
+  @media (width >= 768px) {
+    max-width: 1050px;
+    margin: 32px auto 0;
+  }
+}
+
+.slidePaginationWrap {
+  @media (width >= 768px) {
+    max-width: 500px;
+    width: auto;
+    margin-inline-start: auto;
+  }
+}
+
+.slider :global(.swiper-pagination-horizontal.swiper-pagination-bullets) {
+  position: static;
+  display: flex;
+  border-radius: 10px;
+  justify-content: end;
+
+  :global(.swiper-pagination-bullet) {
+    width: calc(100% / 4);
+    border-radius: 10px;
+    margin: 0;
+    background-color: var(--White);
+    opacity: 1;
+    box-shadow: 0 4px 24px rgb(134 134 134 / 0.25);
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+  }
+}
+
+.controllerWrap {
+  display: flex;
+  column-gap: 10px;
+  justify-content: end;
+  margin-top: 16px;
+}
+
+.slider :global(.swiper-button-prev),
+.slider :global(.swiper-button-next) {
+  position: static;
+  margin: 0;
+  width: 36px;
+  height: 36px;
+}
+
+.slider :global(.swiper-horizontal .swiper-button-prev),
+.slider :global(.swiper-horizontal .swiper-button-next) {
+  margin-top: 0;
+}
+
+.slider :global(.swiper-button-prev) {
+  transform: rotate(180deg);
+}
+
+.illustWrap {
+  width: 180px;
+  height: 135px;
+  margin-top: -30px;
+  @media (width >= 768px) {
+    width: 230px;
+    height: 172px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+  @media (width >= 900px) {
+    left: 50px;
+  }
+}
+
+.illust {
+  width: 100%;
+  aspect-ratio: 230 / 170;
+  object-fit: cover;
+}
