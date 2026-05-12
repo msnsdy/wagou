@@ -61,7 +61,7 @@ export default function FlowSection() {
             prevEl: "#navigationPrev",
           }}
           pagination={{
-            el: "#pagination",
+            el: "#flowPagination",
             clickable: true,
           }}
         >
@@ -79,7 +79,7 @@ export default function FlowSection() {
           })}
           <div className={styles.controller}>
             <div className={styles.slidePaginationWrap}>
-              <div id="pagination" />
+              <div id="flowPagination" />
             </div>
             <div className={styles.controllerWrap}>
               <div id="navigationPrev">

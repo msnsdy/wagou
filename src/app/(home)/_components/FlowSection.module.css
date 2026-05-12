@@ -30,7 +30,7 @@
   }
 }
 
-.swiper {
+.slider :global(.swiper) {
   position: relative;
   padding: 0 20px 24px 20px;
   @media (width >= 768px) {
@@ -39,7 +39,7 @@
   }
 }
 
-:global(.swiper-slide) {
+.slider :global(.swiper-slide) {
   height: auto;
   /* max-width: 311px; */
   width: 75%;
@@ -133,4 +133,10 @@
   @media (width >= 900px) {
     left: 50px;
   }
+}
+
+.illust {
+  width: 100%;
+  aspect-ratio: 230 / 170;
+  object-fit: cover;
 }
