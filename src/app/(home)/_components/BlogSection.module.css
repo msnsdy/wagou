@@ -1,0 +1,28 @@
+.topBlog {
+  padding: 50px 0;
+  @media (width >= 768px) {
+    padding: 100px 0 50px;
+  }
+}
+
+.container {
+  padding: 0 38px;
+  margin-top: 50px;
+  @media (width >= 768px) {
+    max-width: calc(1140px + 40px);
+    margin: 60px auto 0;
+  }
+}
+
+.wrapper {
+  display: grid;
+  gap: 36px;
+  @media (width >= 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.button {
+  max-width: 200px;
+  margin: 40px auto 0;
+}

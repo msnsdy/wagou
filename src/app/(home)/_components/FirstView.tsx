@@ -28,6 +28,7 @@ export default function FirstView() {
             className={styles.menuLogo}
             width="130"
             height="130"
+            priority
           />
         </h1>
         <ul className={styles.menuList}>
@@ -86,6 +87,7 @@ export default function FirstView() {
                   alt=""
                   width="990"
                   height="737"
+                  priority={index === 0}
                   className={styles.slideImage}
                 />
               </SwiperSlide>
