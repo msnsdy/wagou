@@ -8,6 +8,7 @@ import ServiceSection from "./_components/ServiceSection";
 import MenuSection from "./_components/MenuSection";
 import FlowSection from "./_components/FlowSection";
 import BlogSection from "./_components/BlogSection";
+import MediaSection from "./_components/MediaSection";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <MenuSection />
       <FlowSection />
       <BlogSection />
+      <MediaSection />
       <Script
         src="https://unpkg.com/invokers-polyfill@latest/invoker.min.js"
         strategy="lazyOnload"
