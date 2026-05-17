@@ -9,6 +9,7 @@ import { useState } from "react";
 import styles from "./component.module.css";
 
 import PageFirstView from "@/components/layout/PageFirstView";
+import Sidebar from "@/components/layout/Sidebar";
 
 export default function Component() {
   // [現在の状態, 状態を更新する関数名] = useState(初期値);
@@ -35,7 +36,9 @@ export default function Component() {
 
         <HamburgerIcon isOpen={isOpen} isHide={true} onClick={toggleMenu} />
 
-        <PageFirstView text="日々のこと"/>
+        <PageFirstView text="日々のこと" />
+        <hr />
+        <Sidebar />
       </main>
     </>
   );

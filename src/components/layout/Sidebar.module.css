@@ -1,0 +1,76 @@
+.sidebar {
+  display: grid;
+  row-gap: 40px;
+}
+
+.reserve {
+  width: 100%;
+  aspect-ratio: 380 / 232;
+  transition: opacity 0.3s;
+
+  &:focus-visible {
+    opacity: 0.7;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.reserveLink {
+  display: block;
+  width: 100%;
+}
+
+.reserveImage {
+  width: 100%;
+}
+
+.widget {
+  display: grid;
+  row-gap: 7px;
+}
+
+.widgetTitle {
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--primary-color);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 25px;
+}
+
+.list {
+  margin-top: 12px;
+}
+
+.item {
+  display: block;
+  padding-bottom: 5px;
+  border-bottom: solid 1px #939393;
+  transition: opacity 0.3s;
+
+  &:focus-visible {
+    opacity: 0.7;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.itemDate {
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 12%;
+}
+
+.itemTitle {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 12%;
+}
