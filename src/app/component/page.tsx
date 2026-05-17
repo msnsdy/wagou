@@ -8,6 +8,8 @@ import { useState } from "react";
 
 import styles from "./component.module.css";
 
+import PageFirstView from "@/components/layout/PageFirstView";
+
 export default function Component() {
   // [現在の状態, 状態を更新する関数名] = useState(初期値);
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +34,8 @@ export default function Component() {
         </section>
 
         <HamburgerIcon isOpen={isOpen} isHide={true} onClick={toggleMenu} />
+
+        <PageFirstView text="日々のこと"/>
       </main>
     </>
   );

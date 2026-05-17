@@ -1,7 +1,7 @@
 import styles from "./Heading.module.css";
 import Image from "next/image";
 
-type HeadingProps = {
+export type HeadingProps = {
   text: string;
 };
 

@@ -1,0 +1,10 @@
+.pageFv {
+  padding: 36px 0 70px;
+  margin-top: 80px;
+  background: var(--Sky-200);
+  
+  @media (width >= 768px) {
+    padding: 90px 0 70px;
+    margin-top: 100px;
+  }
+}
