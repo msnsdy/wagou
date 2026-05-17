@@ -42,7 +42,7 @@ export default function Header() {
             <Link href="/" className={styles.logoLink}>
               <Image
                 className={styles.logo}
-                src="./common/logo-black.svg"
+                src="/common/logo-black.svg"
                 alt="Wagou"
                 width="100"
                 height="100"
@@ -61,7 +61,7 @@ export default function Header() {
             <Link href="/" className={styles.logoLink}>
               <Image
                 className={styles.logoContent}
-                src="./common/logo-black.svg"
+                src="/common/logo-black.svg"
                 alt="Wagou"
                 width="100"
                 height="100"
