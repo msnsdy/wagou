@@ -4,7 +4,7 @@ import Link from "next/link";
 type ButtonOutlineProps = {
   href: string;
   text: string;
-  blank: boolean;
+  blank?: boolean;
 };
 
 export default function ButtonOutline({ href, text, blank = true }: ButtonOutlineProps) {
