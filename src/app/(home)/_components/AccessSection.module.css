@@ -1,0 +1,70 @@
+.topAccess {
+  padding: 50px 0;
+  @media (width >= 768px) {
+    padding: 100px 0 50px;
+  }
+}
+
+.container {
+  padding: 0 20px;
+  display: grid;
+  gap: 34px 52px;
+  @media (width >= 768px) {
+    max-width: calc(800px + 40px);
+    grid-template-columns: 1fr max-content;
+    margin-inline: auto;
+    align-items: center;
+  }
+}
+
+.mapWrap {
+  aspect-ratio: 400 / 250;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  @media (width >= 768px) {
+    aspect-ratio: 540 / 337;
+  }
+}
+
+.map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  padding: 0 40px;
+  @media (width >= 768px) {
+    padding: 0;
+  }
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 12%;
+}
+
+.address {
+  margin-top: 19px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 12%;
+}
+
+.tel {
+  margin-top: 12px;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 9%;
+  font-weight: 500;
+}
+
+.buttonOutline {
+  max-width: 200px;
+  margin-top: 26px;
+}
