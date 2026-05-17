@@ -9,7 +9,7 @@ import { useState } from "react";
 import styles from "./component.module.css";
 
 import PageFirstView from "@/components/layout/PageFirstView";
-import Sidebar from "@/components/layout/Sidebar";
+import TwoColumn from "@/components/layout/TwoColumn";
 
 export default function Component() {
   // [現在の状態, 状態を更新する関数名] = useState(初期値);
@@ -22,23 +22,20 @@ export default function Component() {
   return (
     <>
       <main className={styles.main}>
-        <section className={styles.section}>
-          <h2>ボタン</h2>
-          <Button href="#" text="詳しくはこちら"></Button>
-          <hr />
-          <ButtonOutline href="#" text="詳しくはこちら"></ButtonOutline>
-        </section>
-
-        <section className={styles.section}>
-          <h2>見出し</h2>
-          <Heading text="見出し"></Heading>
-        </section>
-
-        <HamburgerIcon isOpen={isOpen} isHide={true} onClick={toggleMenu} />
-
-        <PageFirstView text="日々のこと" />
-        <hr />
-        <Sidebar />
+        <TwoColumn>
+          <section className={styles.section}>
+            <h2>ボタン</h2>
+            <Button href="#" text="詳しくはこちら"></Button>
+            <hr />
+            <ButtonOutline href="#" text="詳しくはこちら"></ButtonOutline>
+          </section>
+          <section className={styles.section}>
+            <h2>見出し</h2>
+            <Heading text="見出し"></Heading>
+          </section>
+          <HamburgerIcon isOpen={isOpen} isHide={true} onClick={toggleMenu} />
+          <PageFirstView text="日々のこと" />
+        </TwoColumn>
       </main>
     </>
   );
