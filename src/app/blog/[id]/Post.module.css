@@ -1,0 +1,169 @@
+.post {
+  position: relative;
+  margin-top: 80px;
+  @media (width >= 768px) {
+    margin-top: 140px;
+  }
+}
+
+.container {
+  width: calc(960px + 30px * 2);
+  padding: 0 30px;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.pagePost {
+  
+}
+
+.thumbnail {
+  border-radius: 60px 10px 60px 10px;
+  width: 100%;
+}
+
+.meta {
+  margin-top: 27px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  @media (width >= 768px) {
+    margin-top: 30px;
+  }
+}
+
+.category {
+  padding: 4px 22px;
+  background: var(--primary-color);
+  color: var(--White);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 13px;
+  transition: opacity 0.3s;
+  border-radius: 10px 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 7%;
+
+  &:focus-visible {
+    opacity: 0.7;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.date {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 25px;
+  margin-top: 26px;
+}
+
+.content {
+  margin-top: 30px;
+}
+
+.content > * + * {
+  margin-top: 30px;
+}
+
+.content p {
+  line-height: 25px;
+}
+
+.content h2 {
+  padding: 12px 8px;
+  border-bottom: 2px solid #8E3231;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 25px;
+
+  @media (width >= 768px) {
+    padding: 12px 18px;
+    font-size: 24px;
+  }
+}
+
+.content h3 {
+  padding: 6px 12px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  background-color: #EBEBEB;
+
+  @media (width >= 768px) {
+    font-size: 20px;
+  }
+}
+
+.content figure {
+  margin-inline: 0;
+}
+
+.content figure img {
+  display: block;
+}
+
+.content ul > li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 15px;
+
+  @media (width >= 768px) {
+    font-size: 16px;
+  }
+
+  &::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--Blue-500);
+    position: absolute;
+    top: calc(0.5lh - 4px);
+    left: 0;
+  }
+}
+
+.content blockquote {
+  margin-inline: 0;
+  padding: 8px 20px;
+  border-left: 4px solid var(--Blue-500);
+  background: var(--White);
+
+  @media (width >= 768px) {
+    padding: 24px 28px;
+  }
+}
+
+.content blockquote p {
+  color: var(--Slate-700);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 25px;
+}
+
+.content a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  transition: opacity 0.3s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.content strong {
+  font-weight: 700;
+}
