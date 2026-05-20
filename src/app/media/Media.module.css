@@ -11,10 +11,65 @@
 .list {
   display: grid;
   row-gap: 5px;
-  padding-bottom: 36px;
-  
   @media (width >= 768px) {
     row-gap: 30px;
-    padding-bottom: 50px;
+  }
+}
+
+.pagination {
+  margin: 60px 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 16px;
+}
+
+.arrow {
+  width: 9px;
+  height: 13px;
+}
+
+.arrowImage {
+  aspect-ratio: 9 / 13;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.arrow.prev {
+  transform: rotate(180deg);
+}
+
+.numbers {
+  display: flex;
+  gap: 5px;
+}
+
+.number {
+  display: grid;
+  place-content: center;
+  border: solid 1px var(--primary-color);
+  aspect-ratio: 1;
+  width: 40px;
+  color: var(--primary-color);
+  font-size: 16px;
+  line-height: 26px;
+  transition: background-color 0.3s, color 0.3s;
+
+  &.isCurrent {
+    background-color: var(--primary-color);
+    color: var(--White);
+  }
+
+  &:focus-visible {
+    background-color: var(--primary-color);
+    color: var(--White);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: var(--primary-color);
+      color: var(--White);
+    }
   }
 }
