@@ -19,7 +19,14 @@ export default function BlogCard({
   return (
     <Link href={href} className={styles.card}>
       <div className={styles.imageWrap}>
-        <Image src={src} alt="" width="364" height="242" className={styles.image} />
+        <Image
+          src={src}
+          alt=""
+          width="364"
+          height="242"
+          priority
+          className={styles.image}
+        />
         <p className={styles.category}>{category}</p>
       </div>
       <h3 className={styles.title}>{title}</h3>
