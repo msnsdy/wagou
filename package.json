@@ -10,10 +10,12 @@
     "deploy": "opennextjs-cloudflare build && wrangler deploy"
   },
   "dependencies": {
+    "@types/react-datepicker": "^6.2.0",
     "dialog-closedby-polyfill": "^1.3.0",
     "invokers-polyfill": "^1.0.3",
     "next": "16.2.4",
     "react": "19.2.4",
+    "react-datepicker": "^9.1.0",
     "react-dom": "19.2.4",
     "swiper": "^12.1.4"
   },

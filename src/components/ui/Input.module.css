@@ -1,0 +1,20 @@
+.input {
+  width: 100%;
+  padding: 7px 12px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 25px;
+  background: var(--White);
+  border: 1px solid var(--primary-color);
+
+  &::placeholder {
+    color: #d0d0d0;
+    font-weight: 700;
+    line-height: 25px;
+  }
+
+  &:focus {
+    outline: none;
+    border-width: 2px;
+  }
+}
