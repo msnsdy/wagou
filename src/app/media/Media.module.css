@@ -1,0 +1,20 @@
+.media {
+  max-width: 840px;
+  margin-inline: auto;
+  padding: 0 20px;
+}
+
+.container {
+  width: 100%;
+}
+
+.list {
+  display: grid;
+  row-gap: 5px;
+  padding-bottom: 36px;
+  
+  @media (width >= 768px) {
+    row-gap: 30px;
+    padding-bottom: 50px;
+  }
+}
