@@ -106,7 +106,10 @@ export default function Blog() {
               />
             </Link>
             <div className={styles.numbers}>
-              <Link className={`${styles.number} ${styles.isCurrent}`} href="/blog/">
+              <Link
+                className={`${styles.number} ${styles.isCurrent}`}
+                href="/blog/"
+              >
                 1
               </Link>
               <Link className={styles.number} href="/blog/">
@@ -122,7 +125,7 @@ export default function Blog() {
                 5
               </Link>
             </div>
-            <Link className="page-blog__arrow --next" href="/blog/">
+            <Link className={`${styles.arrow} ${styles.prev}`} href="/blog/">
               <Image
                 src="/common/page-arrow.svg"
                 alt=""
