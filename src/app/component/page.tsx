@@ -4,12 +4,14 @@ import Button from "@/components/ui/Button";
 import ButtonOutline from "@/components/ui/ButtonOutline";
 import Heading from "@/components/ui/Heading";
 import HamburgerIcon from "@/components/ui/HamburgerIcon";
+import Image from "next/image";
 import { useState } from "react";
 
 import styles from "./component.module.css";
 
 import PageFirstView from "@/components/layout/PageFirstView";
 import TwoColumn from "@/components/layout/TwoColumn";
+import OneColumn from "@/components/layout/OneColumn";
 
 export default function Component() {
   // [現在の状態, 状態を更新する関数名] = useState(初期値);
@@ -36,6 +38,23 @@ export default function Component() {
           <HamburgerIcon isOpen={isOpen} isHide={true} onClick={toggleMenu} />
           <PageFirstView text="日々のこと" />
         </TwoColumn>
+        <hr />
+        <OneColumn>
+          <p>
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れ
+          </p>
+          <h2>見出し2</h2>
+          <p>
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れ
+          </p>
+          <figure>
+            <Image src="/blog/post-image01.jpg" alt="" width="700" height="377" />
+          </figure>
+          <h3>見出し3</h3>
+          <p>
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れ
+          </p>
+        </OneColumn>
       </main>
     </>
   );
