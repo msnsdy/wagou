@@ -3,7 +3,7 @@ import styles from "./BlogSection.module.css";
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
-import BlogCard from "./BlogCard";
+import BlogCard from "@/components/ui/BlogCard";
 
 export default function BlogSection() {
   const cards = [
