@@ -1,0 +1,42 @@
+.form {
+  display: grid;
+  gap: 60px;
+}
+
+.body {
+  display: grid;
+  gap: 20px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field:has(:user-invalid) {
+}
+
+.field:has(:user-invalid) .error,
+.privacy:has(:user-invalid) .error {
+  display: block;
+}
+
+.submit {
+  text-align: center;
+}
+
+.error {
+  display: none;
+  color: #FF0000;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.submitError {
+  display: none;
+  color: #FF0000;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 8px;
+}

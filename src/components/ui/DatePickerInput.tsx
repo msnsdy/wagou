@@ -12,9 +12,14 @@ registerLocale("ja", ja);
 type DatePickerInputProps = {
   name: string;
   id?: string;
+  required?: boolean;
 };
 
-export default function DatePickerInput({ id = "", name }: DatePickerInputProps) {
+export default function DatePickerInput({
+  id = "",
+  name,
+  ...restOfProps
+}: DatePickerInputProps) {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const handleChange = (date: Date | null) => {
     setSelectedDate(date);
@@ -31,6 +36,7 @@ export default function DatePickerInput({ id = "", name }: DatePickerInputProps)
       locale="ja" // 日本語カレンダー
       placeholderText="年/月/日"
       className={styles.input}
+      {...restOfProps}
     />
   );
 }
