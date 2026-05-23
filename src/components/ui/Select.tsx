@@ -1,17 +1,26 @@
 import styles from "./Select.module.css";
 
 type SelectProps = {
-  id?: string;
+  items: {
+    value: string;
+    text: string;
+  }[];
+  // 共通設定
   name: string;
+  required?: boolean;
 }
 
-export default function Select({id="", name}:SelectProps) {
+export default function Select({ name, items, ...restOfProps}:SelectProps) {
   return (
     <div className={styles.selectWrap}>
-      <select name={name} id={id} className={styles.select}>
-        <option value="">選択してください</option>
-        <option value="counter">カウンター</option>
-        <option value="table">テーブル</option>
+      <select name={name} className={styles.select}>
+        {items.map((item, index) => {
+          return (
+            <option value={item.value} key={index}>
+              {item.text}
+            </option>
+          );
+        })}
       </select>
     </div>
   );
