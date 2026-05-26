@@ -8,7 +8,7 @@ import Submit from "../ui/Submit";
 
 export default function Form() {
   return (
-    <form className={styles.form}>
+    <form className={styles.form} method="post">
       <div className={styles.body}>
         <div className={styles.field}>
           <Label id="your-name" text="お名前" />
