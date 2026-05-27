@@ -87,7 +87,7 @@ export default function Form() {
         </div>
         <div className={styles.field}>
           <Label id="your-other" text="備考欄" isRequired={false} />
-          <Textarea id="your-other" name="備考欄" required={false} />
+          <Textarea id="your-other" name="your-other" required={false} />
         </div>
       </div>
       <div className={styles.footer}>
