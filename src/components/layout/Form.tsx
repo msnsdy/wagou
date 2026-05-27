@@ -6,9 +6,18 @@ import DatePickerInput from "../ui/DatePickerInput";
 import Select from "../ui/Select";
 import Submit from "../ui/Submit";
 
+const HYPER_FORM_URL = process.env.NEXT_PUBLIC_HYPER_FORM;
+
 export default function Form() {
+  if (!HYPER_FORM_URL) {
+    return (
+      <p>
+        現在はフォームの送信ができない状態です。しばらくしてもう一度お試しいただくか、xxx@example.comまでご連絡ください。
+      </p>
+    );
+  }
   return (
-    <form className={styles.form} method="post">
+    <form className={styles.form} method="post" action={HYPER_FORM_URL}>
       <div className={styles.body}>
         <div className={styles.field}>
           <Label id="your-name" text="お名前" />
@@ -78,7 +87,7 @@ export default function Form() {
         </div>
         <div className={styles.field}>
           <Label id="your-other" text="備考欄" isRequired={false} />
-          <Textarea id="your-other" name="備考欄" required={false} />
+          <Textarea id="your-other" name="your-other" required={false} />
         </div>
       </div>
       <div className={styles.footer}>
