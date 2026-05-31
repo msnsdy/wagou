@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -33,34 +34,34 @@ export default function FirstView() {
         </h1>
         <ul className={styles.menuList}>
           <li className={styles.menuItem}>
-            <a href="/service" className={styles.menuLink}>
+            <Link href="/service/" className={styles.menuLink}>
               和合について
-            </a>
+            </Link>
           </li>
           <li className={styles.menuItem}>
-            <a href="#menu" className={styles.menuLink}>
+            <Link href="#menu" className={styles.menuLink}>
               おしながき
-            </a>
+            </Link>
           </li>
           <li className={styles.menuItem}>
-            <a href="/meditation" className={styles.menuLink}>
+            <Link href="/meditation/" className={styles.menuLink}>
               茶・メディテーション
-            </a>
+            </Link>
           </li>
           <li className={styles.menuItem}>
-            <a href="/blog" className={styles.menuLink}>
+            <Link href="/blog/" className={styles.menuLink}>
               日々のこと
-            </a>
+            </Link>
           </li>
           <li className={styles.menuItem}>
-            <a href="/media" className={styles.menuLink}>
+            <Link href="/media/" className={styles.menuLink}>
               メディア情報
-            </a>
+            </Link>
           </li>
           <li className={styles.menuItem}>
-            <a href="#access" className={styles.menuLink}>
+            <Link href="#access" className={styles.menuLink}>
               アクセス
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

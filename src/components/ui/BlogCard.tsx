@@ -3,21 +3,26 @@ import styles from "./BlogCard.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
+type Category = {
+  id: number;
+  name: string;
+};
+
 type BlogCardProps = {
-  href: string;
+  id: number;
   src: string;
-  category: string;
   title: string;
+  categories: Category[];
 };
 
 export default function BlogCard({
-  href,
+  id,
   src,
-  category,
   title,
+  categories,
 }: BlogCardProps) {
   return (
-    <Link href={href} className={styles.card}>
+    <Link href={`/blog/${id}`} className={styles.card}>
       <div className={styles.imageWrap}>
         <Image
           src={src}
@@ -27,7 +32,13 @@ export default function BlogCard({
           priority
           className={styles.image}
         />
-        <p className={styles.category}>{category}</p>
+        {categories.map((category) => {
+          return (
+            <p className={styles.category} key={category.id}>
+              {category.name}
+            </p>
+          );
+        })}
       </div>
       <h3 className={styles.title}>{title}</h3>
     </Link>

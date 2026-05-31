@@ -13,6 +13,7 @@
     "@types/react-datepicker": "^6.2.0",
     "dialog-closedby-polyfill": "^1.3.0",
     "invokers-polyfill": "^1.0.3",
+    "microcms-js-sdk": "^3.4.0",
     "next": "16.2.4",
     "react": "19.2.4",
     "react-datepicker": "^9.1.0",
