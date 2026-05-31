@@ -15,3 +15,7 @@ directory = ".open-next/assets"
 # ↑ 画像やCSSなど静的ファイルの場所
 binding = "ASSETS"
 # ↑ Workerから静的ファイルを参照するための名前
+
+# wrangler.toml
+[vars]
+MICROCMS_SERVICE_DOMAIN = "k6zbng402h"
