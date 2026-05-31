@@ -1,10 +1,13 @@
-import styles from "./Blog.module.css";
+import styles from "../../Blog.module.css";
 
 import PageFirstView from "@/components/layout/PageFirstView";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import BlogCard from "@/components/ui/BlogCard";
+
 import { client } from "@/app/lib/microcms";
 import { Pagination } from "@/components/layout/Pagination";
+
+const postPerPage = 9;
 
 // 日々のこと記事の型定義
 type Props = {
@@ -15,25 +18,35 @@ type Props = {
   publishedAt: string;
 };
 
-// microCMSからブログ記事を取得
-async function getBlogPosts(): Promise<{posts: Props[]; totalCount: number;} > {
+// ページ番号をもとにmicroCMSから記事を取得
+async function getBlogPosts(catId: number): Promise<{
+  posts: Props[];
+  totalCount: number;
+}> {
   const data = await client.get({
     endpoint: "blog", // 'blog'はmicroCMSのエンドポイント名
     queries: {
       fields: "id,title,thumbnail,category,publishedAt", // idとtitleを取得
+      filters: `category[contains]${catId}`,
       offset: 0,
-      limit: 9, // 最新の9件を取得
+      limit: postPerPage, // 最新の9件を取得
       orders: "-publishedAt",
     },
   });
   return {
     posts: data.contents,
-    totalCount: data.totalCount
-  }
+    totalCount: data.totalCount,
+  };
 }
 
-export default async function Blog() {
-  const { posts, totalCount } = await getBlogPosts();
+type BlogProps = {
+  params: Promise<{ id: string }>;
+};
+
+export default async function Blog({ params }: BlogProps) {
+  const { id } = await params;
+  const { posts, totalCount } = await getBlogPosts(parseInt(id));
+  console.log(posts);
 
   const breadcrumbItems = [
     {
@@ -71,7 +84,12 @@ export default async function Blog() {
               );
             })}
           </div>
-          <Pagination totalCount={totalCount} postPerPage={9} page={1} pagePath="/blog/page/" />
+          <Pagination
+            totalCount={totalCount}
+            postPerPage={postPerPage}
+            page={1}
+            pagePath={`/blog/category/${id}/page/`}
+          />
           <Breadcrumb items={breadcrumbItems} />
         </div>
       </article>
