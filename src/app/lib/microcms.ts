@@ -2,7 +2,6 @@
 import { createClient } from "microcms-js-sdk";
 
 // 環境変数にMICROCMS_SERVICE_DOMAINが設定されていない場合はエラーを投げる
-console.log(process.env.MICROCMS_SERVICE_DOMAIN);
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
 }
