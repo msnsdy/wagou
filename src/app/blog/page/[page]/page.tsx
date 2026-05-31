@@ -1,4 +1,4 @@
-import styles from "./Blog.module.css";
+import styles from "../../Blog.module.css";
 
 import PageFirstView from "@/components/layout/PageFirstView";
 import Breadcrumb from "@/components/layout/Breadcrumb";
@@ -9,6 +9,8 @@ import Link from "next/link";
 import { client } from "@/app/lib/microcms";
 import { Pagination } from "@/components/layout/Pagination";
 
+const postPerPage = 9;
+
 // 日々のこと記事の型定義
 type Props = {
   id: string;
@@ -18,25 +20,34 @@ type Props = {
   publishedAt: string;
 };
 
-// microCMSからブログ記事を取得
-async function getBlogPosts(): Promise<{posts: Props[]; totalCount: number;} > {
+// ページ番号をもとにmicroCMSから記事を取得
+async function getBlogPosts(page: number): Promise<{
+  posts: Props[];
+  totalCount: number;
+}> {
   const data = await client.get({
     endpoint: "blog", // 'blog'はmicroCMSのエンドポイント名
     queries: {
       fields: "id,title,thumbnail,category,publishedAt", // idとtitleを取得
-      offset: 0,
-      limit: 9, // 最新の9件を取得
+      offset: (page - 1) * postPerPage,
+      limit: postPerPage, // 最新の9件を取得
       orders: "-publishedAt",
     },
   });
   return {
     posts: data.contents,
-    totalCount: data.totalCount
-  }
+    totalCount: data.totalCount,
+  };
 }
 
-export default async function Blog() {
-  const { posts, totalCount } = await getBlogPosts();
+type BlogProps = {
+  params: Promise<{ page: string }>;
+};
+
+export default async function Blog({ params }: BlogProps) {
+  const { page } = await params; // URLからページ番号を取得
+  const pageNumber = parseInt(page);
+  const { posts, totalCount } = await getBlogPosts(pageNumber);
 
   const breadcrumbItems = [
     {
@@ -74,7 +85,11 @@ export default async function Blog() {
               );
             })}
           </div>
-          <Pagination totalCount={totalCount} postPerPage={9} page={0} />
+          <Pagination
+            totalCount={totalCount}
+            postPerPage={postPerPage}
+            page={pageNumber}
+          />
           <Breadcrumb items={breadcrumbItems} />
         </div>
       </article>
