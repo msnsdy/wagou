@@ -46,7 +46,7 @@ export default async function Blog({
       text: "日々のこと",
     },
     {
-      href: "/blog/1/",
+      href: `/blog/${post.id}/`,
       text: postTitle,
     },
   ];
