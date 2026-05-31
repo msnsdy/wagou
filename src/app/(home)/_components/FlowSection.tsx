@@ -1,3 +1,5 @@
+"use client";
+
 import Heading from "@/components/ui/Heading";
 import Image from "next/image";
 import FlowCard from "./FlowCard";
