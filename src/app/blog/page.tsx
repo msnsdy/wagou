@@ -6,63 +6,32 @@ import BlogCard from "@/components/ui/BlogCard";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Blog() {
-  const cards = [
-    {
-      href: "/blog",
-      src: "/top/blog-image01.webp",
-      category: "Column",
-      title: "日本茶との出会い",
+import { client } from "@/app/lib/microcms";
+
+// 日々のこと記事の型定義
+type Props = {
+  id: string;
+  title: string;
+  thumbnail?: { url: string; width: number; height: number };
+  category?: { id: string; name: string }[];
+  publishedAt: string;
+};
+
+// microCMSからブログ記事を取得
+async function getBlogPosts(): Promise<Props[]> {
+  const data = await client.get({
+    endpoint: "blog", // 'blog'はmicroCMSのエンドポイント名
+    queries: {
+      fields: "id,title,thumbnail,category,publishedAt", // idとtitleを取得
+      limit: 9, // 最新の5件を取得
+      orders: "-publishedAt",
     },
-    {
-      href: "/blog",
-      src: "/top/blog-image02.webp",
-      category: "Events",
-      title: "言葉を超えて、五感で味わいあう。",
-    },
-    {
-      href: "/blog",
-      src: "/top/blog-image03.webp",
-      category: "Farm",
-      title: "まちの一つとして、ここにあること。お店を始めて芽生えた思い",
-    },
-    {
-      href: "/blog",
-      src: "/top/blog-image01.webp",
-      category: "Column",
-      title: "日本茶との出会い",
-    },
-    {
-      href: "/blog",
-      src: "/top/blog-image02.webp",
-      category: "Events",
-      title: "言葉を超えて、五感で味わいあう。",
-    },
-    {
-      href: "/blog",
-      src: "/top/blog-image03.webp",
-      category: "Farm",
-      title: "まちの一つとして、ここにあること。お店を始めて芽生えた思い",
-    },
-    {
-      href: "/blog",
-      src: "/top/blog-image01.webp",
-      category: "Column",
-      title: "日本茶との出会い",
-    },
-    {
-      href: "/blog",
-      src: "/top/blog-image02.webp",
-      category: "Events",
-      title: "言葉を超えて、五感で味わいあう。",
-    },
-    {
-      href: "/blog",
-      src: "/top/blog-image03.webp",
-      category: "Farm",
-      title: "まちの一つとして、ここにあること。お店を始めて芽生えた思い",
-    },
-  ];
+  });
+  return data.contents;
+}
+
+export default async function Blog() {
+  const posts = await getBlogPosts();
 
   const breadcrumbItems = [
     {
@@ -82,14 +51,19 @@ export default function Blog() {
       <article className={styles.blog}>
         <div className={styles.container}>
           <div className={styles.cards}>
-            {cards.map((card, index) => {
+            {posts.map((post) => {
               return (
-                <div className={styles.card} key={index}>
+                <div className={styles.card} key={post.id}>
                   <BlogCard
-                    href={card.href}
-                    src={card.src}
-                    category={card.category}
-                    title={card.title}
+                    id={parseInt(post.id)}
+                    src={post?.thumbnail?.url}
+                    title={post.title}
+                    categories={post?.category?.map((cat) => {
+                      return {
+                        id: parseInt(cat.id),
+                        name: cat.name,
+                      };
+                    })}
                   />
                 </div>
               );
