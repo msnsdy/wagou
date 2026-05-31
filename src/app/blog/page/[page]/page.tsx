@@ -3,8 +3,6 @@ import styles from "../../Blog.module.css";
 import PageFirstView from "@/components/layout/PageFirstView";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import BlogCard from "@/components/ui/BlogCard";
-import Image from "next/image";
-import Link from "next/link";
 
 import { client } from "@/app/lib/microcms";
 import { Pagination } from "@/components/layout/Pagination";
@@ -89,6 +87,7 @@ export default async function Blog({ params }: BlogProps) {
             totalCount={totalCount}
             postPerPage={postPerPage}
             page={pageNumber}
+            pagePath="/blog/page/"
           />
           <Breadcrumb items={breadcrumbItems} />
         </div>

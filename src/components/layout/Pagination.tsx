@@ -6,12 +6,14 @@ type PaginationProps = {
   totalCount: number;
   postPerPage: number;
   page: number;
+  pagePath: string;
 };
 
 export const Pagination = ({
   totalCount,
   postPerPage,
   page,
+  pagePath
 }: PaginationProps) => {
   const perPage = postPerPage;
   const range = (start, end) =>
@@ -21,7 +23,7 @@ export const Pagination = ({
       {page > 1 && (
         <Link
           className={`${styles.arrow} ${styles.prev}`}
-          href={`/blog/page/${page - 1}`}
+          href={`${pagePath}${page - 1}`}
         >
           <Image
             src="/common/page-arrow.svg"
@@ -36,7 +38,7 @@ export const Pagination = ({
         {range(1, Math.ceil(totalCount / perPage)).map((number, index) => (
           <Link
             className={`${styles.number} ${page === number && styles.isCurrent}`}
-            href={`/blog/page/${number}`}
+            href={`${pagePath}${number}`}
             key={index}
           >
             {number}
@@ -46,7 +48,7 @@ export const Pagination = ({
       {page < Math.ceil(totalCount / perPage) && (
         <Link
           className={`${styles.arrow} ${styles.next}`}
-          href={`/blog/page/${page + 1}`}
+          href={`${pagePath}${page + 1}`}
         >
           <Image
             src="/common/page-arrow.svg"
