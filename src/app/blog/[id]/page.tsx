@@ -3,8 +3,39 @@ import Image from "next/image";
 import Link from "next/link";
 import TwoColumn from "@/components/layout/TwoColumn";
 import Breadcrumb from "@/components/layout/Breadcrumb";
+import { client } from "@/app/lib/microcms";
+import dayjs from "dayjs";
 
-export default function Blog() {
+// ブログ記事の型定義
+type Props = {
+  id: string;
+  thumbnail?: { url: string; width: number; height: number };
+  title: string;
+  contents: string;
+  publishedAt: string;
+  category: { name: string };
+};
+
+// microCMSから特定の記事を取得
+async function getBlogPost(id: string): Promise<Props> {
+  const data = await client.get({
+    endpoint: `blog/${id}`,
+  });
+  return data;
+}
+
+export default async function Blog({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params; // URLからidパラメータを取得
+  const post = await getBlogPost(id);
+  const postTitle = post.title;
+
+  // dayjsを使ってpublishedAtをYY.MM.DD形式に変換
+  const formattedDate = dayjs(post.publishedAt).format("YYYY.M.D");
+
   const breadcrumbItems = [
     {
       href: "/",
@@ -15,8 +46,8 @@ export default function Blog() {
       text: "日々のこと",
     },
     {
-      href: "/blog/1/",
-      text: "日本茶との出会い",
+      href: `/blog/${post.id}/`,
+      text: postTitle,
     },
   ];
 
@@ -27,39 +58,22 @@ export default function Blog() {
           <div className={styles.pagePost}>
             <Image
               className={styles.thumbnail}
-              src="/blog/blog-image01.png"
+              src={post.thumbnail.url}
               alt=""
-              width="700"
-              height="377"
+              width={post.thumbnail.width}
+              height={post.thumbnail.height}
             />
             <div className={styles.meta}>
-              <a className={styles.category} href="/blog/">
-                Colam
-              </a>
-              <p className={styles.date}>2024.6.6</p>
+              <Link className={styles.category} href={`/blog/category/${post.category[0].id}`}>
+                {post.category && post.category[0].name}
+              </Link>
+              <p className={styles.date}>{formattedDate}</p>
             </div>
-            <h2 className={styles.title}>日本茶との出会い。</h2>
-            <div className={styles.content}>
-              <p>
-                この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れ
-              </p>
-              <h2>見出し２</h2>
-              <p>
-                この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れ
-              </p>
-              <figure>
-                <Image
-                  src="/blog/post-image01.jpg"
-                  alt=""
-                  width="700"
-                  height="377"
-                />
-              </figure>
-              <h3>見出し3</h3>
-              <p>
-                この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れ
-              </p>
-            </div>
+            <h2 className={styles.title}>{post.title}</h2>
+            <div
+              className={styles.content}
+              dangerouslySetInnerHTML={{ __html: post.contents }}
+            ></div>
           </div>
         </TwoColumn>
         <Breadcrumb items={breadcrumbItems} />
