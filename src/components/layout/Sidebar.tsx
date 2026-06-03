@@ -1,7 +1,31 @@
 import styles from "./Sidebar.module.css";
 import Image from "next/image";
+import { formatDate } from "@/utils/date";
+import { client } from "@/app/lib/microcms";
 
-export default function Sidebar() {
+// 日々のこと記事の型定義
+type Props = {
+  id: string;
+  title: string;
+  publishedAt: string;
+};
+
+// microCMSからブログ記事を取得
+async function getLatestBlogPosts(): Promise<Props[]> {
+  const data = await client.get({
+    endpoint: "blog", // 'blog'はmicroCMSのエンドポイント名
+    queries: {
+      fields: "id,title,publishedAt", // idとtitleを取得
+      limit: 5, // 最新の5件を取得
+      orders: "-publishedAt",
+    },
+  });
+  return data.contents;
+}
+
+export default async function Sidebar() {
+  const posts = await getLatestBlogPosts();
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.reserve}>
@@ -18,26 +42,14 @@ export default function Sidebar() {
       <div className={styles.widget}>
         <h3 className={styles.widgetTitle}>最近の投稿</h3>
         <div className={styles.list}>
-          <a href="/blog/post.html" className={styles.item}>
-            <time className={styles.itemDate}>2026/6/6</time>
-            <p className={styles.itemTitle}>日本茶との出会い</p>
-          </a>
-          <a href="/blog/post.html" className={styles.item}>
-            <time className={styles.itemDate}>2026/6/6</time>
-            <p className={styles.itemTitle}>日本茶との出会い</p>
-          </a>
-          <a href="/blog/post.html" className={styles.item}>
-            <time className={styles.itemDate}>2026/6/6</time>
-            <p className={styles.itemTitle}>日本茶との出会い</p>
-          </a>
-          <a href="/blog/post.html" className={styles.item}>
-            <time className={styles.itemDate}>2026/6/6</time>
-            <p className={styles.itemTitle}>日本茶との出会い</p>
-          </a>
-          <a href="/blog/post.html" className={styles.item}>
-            <time className={styles.itemDate}>2026/6/6</time>
-            <p className={styles.itemTitle}>日本茶との出会い</p>
-          </a>
+          {posts.map((post) => {
+            return (
+              <a href={`/blog/${post.id}/`} className={styles.item} key={post.id}>
+                <time className={styles.itemDate}>{formatDate(post.publishedAt)}</time>
+                <p className={styles.itemTitle}>{post.title}</p>
+              </a>
+            );
+          })}
         </div>
       </div>
     </div>
