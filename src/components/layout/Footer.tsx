@@ -24,7 +24,7 @@ export default function Footer() {
           <nav className={styles.nav}>
             <ul className={styles.list}>
               <li className={styles.item}>
-                <Link href="/sevice" className={styles.link}>
+                <Link href="/service" className={styles.link}>
                   和合について
                 </Link>
               </li>

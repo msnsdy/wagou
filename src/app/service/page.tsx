@@ -4,7 +4,22 @@ import OneColumn from "@/components/layout/OneColumn";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import Image from "next/image";
 
-export default function Service() {
+import { client } from "@/app/lib/microcms";
+
+type Props = {
+  contents: string;
+};
+
+async function getServicePost(): Promise<Props> {
+  const data = await client.get({
+    endpoint: 'service',
+  });
+
+  return data;
+}
+
+export default async function Service() {
+  const data = await getServicePost();
   const breadcrumbItems = [
     {
       href: "/",
@@ -23,20 +38,7 @@ export default function Service() {
       <article className={styles.service}>
       <div className={styles.container}>
         <OneColumn>
-          <p>
-            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れ
-          </p>
-          <h2>見出し2</h2>
-          <p>
-            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れ
-          </p>
-          <figure>
-            <Image src="/blog/post-image01.jpg" alt="" width="600" height="400" />
-          </figure>
-          <h3>見出し3</h3>
-          <p>
-            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れ
-          </p>
+          <div dangerouslySetInnerHTML={{__html: data.contents}}></div>
         </OneColumn>
         <Breadcrumb items={breadcrumbItems} />
       </div>
