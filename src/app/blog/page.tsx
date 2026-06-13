@@ -6,6 +6,8 @@ import BlogCard from "@/components/ui/BlogCard";
 import { client } from "@/app/lib/microcms";
 import { Pagination } from "@/components/layout/Pagination";
 
+const postPerPage = 9;
+
 // 日々のこと記事の型定義
 type Props = {
   id: string;
@@ -22,7 +24,7 @@ async function getBlogPosts(): Promise<{posts: Props[]; totalCount: number;} > {
     queries: {
       fields: "id,title,thumbnail,category,publishedAt", // idとtitleを取得
       offset: 0,
-      limit: 9, // 最新の9件を取得
+      limit: postPerPage, // 最新の9件を取得
       orders: "-publishedAt",
     },
   });
@@ -71,7 +73,12 @@ export default async function Blog() {
               );
             })}
           </div>
-          <Pagination totalCount={totalCount} postPerPage={9} page={1} pagePath="/blog/page/" />
+          <Pagination
+            totalCount={totalCount}
+            postPerPage={postPerPage}
+            page={1}
+            pagePath="/blog/page/"
+          />
           <Breadcrumb items={breadcrumbItems} />
         </div>
       </article>
