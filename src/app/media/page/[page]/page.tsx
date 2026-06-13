@@ -1,4 +1,4 @@
-import styles from "./Media.module.css";
+import styles from "../../Media.module.css";
 import PageFirstView from "@/components/layout/PageFirstView";
 import MediaItem from "@/components/ui/MediaItem";
 import Breadcrumb from "@/components/layout/Breadcrumb";
@@ -17,7 +17,7 @@ type Props = {
 };
 
 // microCMSからブログ記事を取得
-async function getMediaPosts(): Promise<{
+async function getMediaPosts(page: number): Promise<{
   posts: Props[];
   totalCount: number;
 }> {
@@ -25,8 +25,8 @@ async function getMediaPosts(): Promise<{
     endpoint: "media", // 'media'はmicroCMSのエンドポイント名
     queries: {
       fields: "id,title,publishedAt", // idとtitleを取得
-      offset: 0,
-      limit: postPerPage, // 最新の12件を取得
+      offset: (page - 1) * postPerPage,
+      limit: postPerPage, // 最新の10件を取得
       orders: "-publishedAt",
     },
   });
@@ -36,8 +36,14 @@ async function getMediaPosts(): Promise<{
   };
 }
 
-export default async function Media() {
-  const { posts, totalCount } = await getMediaPosts();
+type MediaProps = {
+  params: Promise<{ page: string }>;
+};
+
+export default async function Media({ params }: MediaProps) {
+  const { page } = await params;
+  const pageNumber = parseInt(page);
+  const { posts, totalCount } = await getMediaPosts(pageNumber);
 
   const breadcrumbItems = [
     {
@@ -69,12 +75,7 @@ export default async function Media() {
                 );
               })}
             </ul>
-            <Pagination
-              totalCount={totalCount}
-              postPerPage={postPerPage}
-              page={1}
-              pagePath="/media/page/"
-            />
+            <Pagination totalCount={totalCount} postPerPage={postPerPage} page={pageNumber} pagePath="/media/page/" />
           </div>
           <Breadcrumb items={breadcrumbItems} />
         </div>
