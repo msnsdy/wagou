@@ -6,6 +6,7 @@ import BlogCard from "@/components/ui/BlogCard";
 
 import { client } from "@/app/lib/microcms";
 import { Pagination } from "@/components/layout/Pagination";
+import { notFound } from "next/navigation";
 
 const postPerPage = 9;
 
@@ -49,6 +50,10 @@ export default async function Blog({ params }: BlogProps) {
     parseInt(id),
     parseInt(page),
   );
+
+  if (posts.length === 0) {
+    notFound();
+  }
 
   const breadcrumbItems = [
     {

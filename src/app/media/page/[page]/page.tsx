@@ -6,6 +6,7 @@ import Breadcrumb from "@/components/layout/Breadcrumb";
 import { client } from "@/app/lib/microcms";
 import { formatDate } from "@/utils/date";
 import { Pagination } from "@/components/layout/Pagination";
+import { notFound } from "next/navigation";
 
 const postPerPage = 10;
 
@@ -44,6 +45,10 @@ export default async function Media({ params }: MediaProps) {
   const { page } = await params;
   const pageNumber = parseInt(page);
   const { posts, totalCount } = await getMediaPosts(pageNumber);
+
+  if (posts.length === 0) {
+    notFound();
+  }
 
   const breadcrumbItems = [
     {
