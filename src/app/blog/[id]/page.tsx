@@ -5,6 +5,7 @@ import TwoColumn from "@/components/layout/TwoColumn";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import { client } from "@/app/lib/microcms";
 import dayjs from "dayjs";
+import { notFound } from "next/navigation";
 
 // ブログ記事の型定義
 type Props = {
@@ -17,11 +18,19 @@ type Props = {
 };
 
 // microCMSから特定の記事を取得
-async function getBlogPost(id: string): Promise<Props> {
-  const data = await client.get({
-    endpoint: `blog/${id}`,
-  });
-  return data;
+async function getBlogPost(id: string): Promise<Props | null> {
+  try {
+    const data = await client.get({
+      endpoint: `blog/${id}`,
+    });
+    return data;
+  } catch (e: unknown) {
+    // microCMSが404を返した場合はnullで返す
+    if (e instanceof Error && e.message.includes("404")) {
+      return null;
+    }
+    throw e; // 404以外のエラーは再スロー
+  }
 }
 
 export default async function Blog({
@@ -31,7 +40,12 @@ export default async function Blog({
 }) {
   const { id } = await params; // URLからidパラメータを取得
   const post = await getBlogPost(id);
+  if (!post) {
+    notFound();
+    return;
+  }
   const postTitle = post.title;
+
 
   // dayjsを使ってpublishedAtをYY.MM.DD形式に変換
   const formattedDate = dayjs(post.publishedAt).format("YYYY.M.D");
