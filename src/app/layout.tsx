@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
+
 const notoSerifJp = Noto_Serif_JP({
   weight: ["400", "500", "600", "700"],
   variable: "--font-noto-serif-jp",
