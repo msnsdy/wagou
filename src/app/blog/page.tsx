@@ -14,7 +14,7 @@ export const metadata = {
     ...defaultOpenGraph,
     title: `日々のこと | ${siteName}`,
     description: "日々のこと一覧ページです。",
-    url: "/reservation/",
+    url: "/blog/",
   },
 };
 

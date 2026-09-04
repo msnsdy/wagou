@@ -73,7 +73,7 @@ export async function generateMetadata({
       ...defaultOpenGraph,
       title: `「${categoryName}」の記事一覧 | 日々のこと | ${siteName}`,
       description: `日々のこと「${categoryName}」の記事一覧ページです。`,
-      url: "/reservation/",
+      url: `/blog/category/${id}/page/${page}`,
     },
   };
 }
