@@ -5,6 +5,18 @@ import Breadcrumb from "@/components/layout/Breadcrumb";
 import BlogCard from "@/components/ui/BlogCard";
 import { client } from "@/app/lib/microcms";
 import { Pagination } from "@/components/layout/Pagination";
+import { defaultOpenGraph, siteName } from "@/app/lib/metadata";
+
+export const metadata = {
+  title: "日々のこと",
+  description: "日々のこと一覧ページです。",
+  openGraph: {
+    ...defaultOpenGraph,
+    title: `日々のこと | ${siteName}`,
+    description: "日々のこと一覧ページです。",
+    url: "/reservation/",
+  },
+};
 
 const postPerPage = 9;
 
@@ -18,7 +30,7 @@ type Props = {
 };
 
 // microCMSからブログ記事を取得
-async function getBlogPosts(): Promise<{posts: Props[]; totalCount: number;} > {
+async function getBlogPosts(): Promise<{ posts: Props[]; totalCount: number }> {
   const data = await client.get({
     endpoint: "blog", // 'blog'はmicroCMSのエンドポイント名
     queries: {
@@ -30,8 +42,8 @@ async function getBlogPosts(): Promise<{posts: Props[]; totalCount: number;} > {
   });
   return {
     posts: data.contents,
-    totalCount: data.totalCount
-  }
+    totalCount: data.totalCount,
+  };
 }
 
 export default async function Blog() {

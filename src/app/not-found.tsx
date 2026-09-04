@@ -3,7 +3,17 @@ import PageFirstView from "@/components/layout/PageFirstView";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
-import Link from "next/link";
+import { defaultOpenGraph, siteName } from "@/app/lib/metadata";
+
+export const metadata = {
+  title: "ページが見つかりませんでした",
+  description: "ページが見つかりませんでした。",
+  openGraph: {
+    ...defaultOpenGraph,
+    title: `ページが見つかりませんでした | ${siteName}`,
+    description: "ページが見つかりませんでした",
+  },
+};
 
 export default function NotFound() {
   const breadcrumbItems = [

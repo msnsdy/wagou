@@ -7,6 +7,8 @@ import BlogCard from "@/components/ui/BlogCard";
 import { client } from "@/app/lib/microcms";
 import { Pagination } from "@/components/layout/Pagination";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
+import { defaultOpenGraph, siteName } from "@/app/lib/metadata";
 
 const postPerPage = 9;
 
@@ -20,7 +22,10 @@ type Props = {
 };
 
 // ページ番号をもとにmicroCMSから記事を取得
-async function getBlogPosts(catId: number, page: number): Promise<{
+async function getBlogPosts(
+  catId: number,
+  page: number,
+): Promise<{
   posts: Props[];
   totalCount: number;
 }> {
@@ -40,9 +45,38 @@ async function getBlogPosts(catId: number, page: number): Promise<{
   };
 }
 
+// 絞り込み済みの記事からカテゴリー名を取得（各記事に対象のカテゴリーが含まれる)
+// 記事が1件もない場合など、見つからなければ undefined を返す。
+function getCategoryName(posts: Props[], catId: string): string | undefined {
+  // 各記事の category（無ければ空配列）を1つの配列に平坦化
+  const allCategories = posts.flatMap((post) => post.category ?? []);
+  // その中から id が一致するカテゴリーを探し、その name を返す
+  return allCategories.find((cat) => cat.id === catId)?.name;
+}
+
 type BlogProps = {
   params: Promise<{ id: string; page: string }>;
 };
+
+export async function generateMetadata({
+  params,
+}: BlogProps): Promise<Metadata> {
+  // read route params
+  const { id, page } = await params;
+  const { posts, totalCount } = await getBlogPosts(parseInt(id), parseInt(page));
+  const categoryName = getCategoryName(posts, id) ?? "カテゴリー";
+
+  return {
+    title: `「${categoryName}」の記事一覧 | 日々のこと`,
+    description: `日々のこと「${categoryName}」の記事一覧ページです。`,
+    openGraph: {
+      ...defaultOpenGraph,
+      title: `「${categoryName}」の記事一覧 | 日々のこと | ${siteName}`,
+      description: `日々のこと「${categoryName}」の記事一覧ページです。`,
+      url: "/reservation/",
+    },
+  };
+}
 
 export default async function Blog({ params }: BlogProps) {
   const { id, page } = await params;

@@ -41,6 +41,13 @@ type MediaProps = {
   params: Promise<{ page: string }>;
 };
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return {
+    title: "メディア情報",
+    description: "メディア情報一覧ページです。",
+  };
+}
+
 export default async function Media({ params }: MediaProps) {
   const { page } = await params;
   const pageNumber = parseInt(page);

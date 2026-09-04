@@ -6,6 +6,9 @@ import Breadcrumb from "@/components/layout/Breadcrumb";
 import { client } from "@/app/lib/microcms";
 import dayjs from "dayjs";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { stripHtmlTags } from "@/utils/string";
+import { defaultOpenGraph, siteName } from "@/app/lib/metadata";
 
 // ブログ記事の型定義
 type Props = {
@@ -15,6 +18,7 @@ type Props = {
   contents: string;
   publishedAt: string;
   category: { name: string };
+  params: Promise<{ id: string }>;
 };
 
 // microCMSから特定の記事を取得
@@ -33,11 +37,26 @@ async function getBlogPost(id: string): Promise<Props | null> {
   }
 }
 
-export default async function Blog({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  // read route params
+  const { id } = await params;
+  const post = await getBlogPost(id);
+
+  return {
+    title: `${post.title} | 日々のこと`,
+    description: stripHtmlTags(post.contents).slice(0, 120) + "…",
+    openGraph: {
+      ...defaultOpenGraph,
+      title: `${post.title} | 日々のこと | ${siteName}`,
+      description: stripHtmlTags(post.contents).slice(0, 120) + "…",
+      images: [post.thumbnail.url],
+      url: `/blog/${id}`,
+      type: "article",
+    },
+  };
+}
+
+export default async function Blog({ params }: Props) {
   const { id } = await params; // URLからidパラメータを取得
   const post = await getBlogPost(id);
   if (!post) {
@@ -45,7 +64,6 @@ export default async function Blog({
     return;
   }
   const postTitle = post.title;
-
 
   // dayjsを使ってpublishedAtをYY.MM.DD形式に変換
   const formattedDate = dayjs(post.publishedAt).format("YYYY.M.D");
@@ -78,7 +96,10 @@ export default async function Blog({
               height={post.thumbnail.height}
             />
             <div className={styles.meta}>
-              <Link className={styles.category} href={`/blog/category/${post.category[0].id}`}>
+              <Link
+                className={styles.category}
+                href={`/blog/category/${post.category[0].id}`}
+              >
                 {post.category && post.category[0].name}
               </Link>
               <p className={styles.date}>{formattedDate}</p>

@@ -7,6 +7,11 @@ import { client } from "@/app/lib/microcms";
 import { formatDate } from "@/utils/date";
 import { Pagination } from "@/components/layout/Pagination";
 
+export const metadata = {
+  title: "メディア情報",
+  description: "メディア情報一覧ページです。",
+};
+
 const postPerPage = 10;
 
 // 記事の型定義

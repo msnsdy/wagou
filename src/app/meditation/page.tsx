@@ -2,8 +2,20 @@ import styles from "./Meditation.module.css";
 import PageFirstView from "@/components/layout/PageFirstView";
 import OneColumn from "@/components/layout/OneColumn";
 import Breadcrumb from "@/components/layout/Breadcrumb";
+import { defaultOpenGraph, siteName } from "@/app/lib/metadata";
 
 import { client } from "@/app/lib/microcms";
+
+export const metadata = {
+  title: "茶・メディテーション",
+  description: "茶・メディテーションページです。",
+  openGraph: {
+    ...defaultOpenGraph,
+    title: `茶・メディテーション | ${siteName}`,
+    description: "茶・メディテーションページです。",
+    url: "/meditation/",
+  },
+};
 
 type Props = {
   contents: string;

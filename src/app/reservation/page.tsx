@@ -4,6 +4,18 @@ import PageFirstView from "@/components/layout/PageFirstView";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import Form from "@/components/layout/Form";
 import Image from "next/image";
+import { defaultOpenGraph, siteName } from "@/app/lib/metadata";
+
+export const metadata = {
+  title: "予約ページ",
+  description: "予約ページです。",
+  openGraph: {
+    ...defaultOpenGraph,
+    title: `予約ページ | ${siteName}`,
+    description: "予約ページです。",
+    url: "/reservation/",
+  },
+};
 
 export default function Reservation() {
   const breadcrumbItems = [

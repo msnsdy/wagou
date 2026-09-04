@@ -7,6 +7,7 @@ import BlogCard from "@/components/ui/BlogCard";
 import { client } from "@/app/lib/microcms";
 import { Pagination } from "@/components/layout/Pagination";
 import { notFound } from "next/navigation";
+import { defaultOpenGraph, siteName } from "@/app/lib/metadata";
 
 const postPerPage = 9;
 
@@ -41,6 +42,17 @@ async function getBlogPosts(page: number): Promise<{
 
 type BlogProps = {
   params: Promise<{ page: string }>;
+};
+
+export const metadata = {
+  title: "日々のこと",
+  description: "日々のこと一覧ページです。",
+  openGraph: {
+      ...defaultOpenGraph,
+      title: `日々のこと | ${siteName}`,
+      description: "日々のこと一覧ページです。",
+      url: "/reservation/",
+    },
 };
 
 export default async function Blog({ params }: BlogProps) {
