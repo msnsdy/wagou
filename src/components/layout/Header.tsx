@@ -17,6 +17,10 @@ export default function Header() {
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   useEffect(() => {
     if (pathname !== "/") return; // トップページ以外は何もしない
     const handleScroll = () => {
@@ -70,32 +74,56 @@ export default function Header() {
             <nav className={styles.nav}>
               <ul className={styles.list}>
                 <li className={styles.item}>
-                  <Link href="/service" className={styles.link}>
+                  <Link
+                    href="/service"
+                    className={styles.link}
+                    onClick={closeMenu}
+                  >
                     和合について
                   </Link>
                 </li>
                 <li className={styles.item}>
-                  <Link href="/#menu" className={styles.link}>
+                  <Link
+                    href="/#menu"
+                    className={styles.link}
+                    onClick={closeMenu}
+                  >
                     おしながき
                   </Link>
                 </li>
                 <li className={styles.item}>
-                  <Link href="/meditation" className={styles.link}>
+                  <Link
+                    href="/meditation"
+                    className={styles.link}
+                    onClick={closeMenu}
+                  >
                     茶・メディテーション
                   </Link>
                 </li>
                 <li className={styles.item}>
-                  <Link href="/blog/" className={styles.link}>
+                  <Link
+                    href="/blog/"
+                    className={styles.link}
+                    onClick={closeMenu}
+                  >
                     日々のこと
                   </Link>
                 </li>
                 <li className={styles.item}>
-                  <Link href="/media/" className={styles.link}>
+                  <Link
+                    href="/media/"
+                    className={styles.link}
+                    onClick={closeMenu}
+                  >
                     メディア情報
                   </Link>
                 </li>
                 <li className={styles.item}>
-                  <Link href="/#access" className={styles.link}>
+                  <Link
+                    href="/#access"
+                    className={styles.link}
+                    onClick={closeMenu}
+                  >
                     アクセス
                   </Link>
                 </li>
