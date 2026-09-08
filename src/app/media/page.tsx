@@ -6,6 +6,18 @@ import Breadcrumb from "@/components/layout/Breadcrumb";
 import { client } from "@/app/lib/microcms";
 import { formatDate } from "@/utils/date";
 import { Pagination } from "@/components/layout/Pagination";
+import { defaultOpenGraph, siteName } from "@/app/lib/metadata";
+
+export const metadata = {
+  title: "メディア情報",
+  description: "メディア情報一覧ページです。",
+  openGraph: {
+    ...defaultOpenGraph,
+    title: `メディア情報 | ${siteName}`,
+    description: "メディア情報一覧ページです。",
+    url: "/media/",
+  },
+};
 
 const postPerPage = 10;
 

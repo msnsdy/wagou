@@ -7,6 +7,8 @@ import { client } from "@/app/lib/microcms";
 import { formatDate } from "@/utils/date";
 import { Pagination } from "@/components/layout/Pagination";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { defaultOpenGraph, siteName } from "@/app/lib/metadata";
 
 const postPerPage = 10;
 
@@ -40,6 +42,22 @@ async function getMediaPosts(page: number): Promise<{
 type MediaProps = {
   params: Promise<{ page: string }>;
 };
+
+export async function generateMetadata({ params }: MediaProps): Promise<Metadata> {
+  // read route params
+  const { page } = await params;
+
+  return {
+    title: "メディア情報",
+    description: "メディア情報一覧ページです。",
+    openGraph: {
+      ...defaultOpenGraph,
+      title: `メディア情報 | ${siteName}`,
+      description: "メディア情報一覧ページです。",
+      url: `/media/page/${page}`,
+    },
+  };
+}
 
 export default async function Media({ params }: MediaProps) {
   const { page } = await params;

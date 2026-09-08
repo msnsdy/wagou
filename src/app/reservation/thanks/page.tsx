@@ -3,6 +3,19 @@ import styles from "./Thanks.module.css";
 import PageFirstView from "@/components/layout/PageFirstView";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import Image from "next/image";
+import { defaultOpenGraph, siteName } from "@/app/lib/metadata";
+
+
+export const metadata = {
+  title: "予約完了",
+  description: "予約完了ページです。",
+  openGraph: {
+    ...defaultOpenGraph,
+    title: `予約完了 | ${siteName}`,
+    description: "予約完了ページです。",
+    url: "/reservation/thanks/",
+  },
+};
 
 export default function Thanks() {
   const breadcrumbItems = [

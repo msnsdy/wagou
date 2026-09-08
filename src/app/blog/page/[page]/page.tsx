@@ -7,6 +7,8 @@ import BlogCard from "@/components/ui/BlogCard";
 import { client } from "@/app/lib/microcms";
 import { Pagination } from "@/components/layout/Pagination";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { defaultOpenGraph, siteName } from "@/app/lib/metadata";
 
 const postPerPage = 9;
 
@@ -42,6 +44,22 @@ async function getBlogPosts(page: number): Promise<{
 type BlogProps = {
   params: Promise<{ page: string }>;
 };
+
+export async function generateMetadata({ params }: BlogProps): Promise<Metadata> {
+  // read route params
+  const { page } = await params;
+
+  return {
+    title: "日々のこと",
+    description: "日々のこと一覧ページです。",
+    openGraph: {
+      ...defaultOpenGraph,
+      title: `日々のこと | ${siteName}`,
+      description: "日々のこと一覧ページです。",
+      url: `/blog/page/${page}`,
+    },
+  };
+}
 
 export default async function Blog({ params }: BlogProps) {
   const { page } = await params; // URLからページ番号を取得

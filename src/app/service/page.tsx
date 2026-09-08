@@ -2,9 +2,20 @@ import styles from "./Service.module.css";
 import PageFirstView from "@/components/layout/PageFirstView";
 import OneColumn from "@/components/layout/OneColumn";
 import Breadcrumb from "@/components/layout/Breadcrumb";
-import Image from "next/image";
+import { defaultOpenGraph, siteName } from "@/app/lib/metadata";
 
 import { client } from "@/app/lib/microcms";
+
+export const metadata = {
+  title: "和合について",
+  description: "和合についてページです。",
+  openGraph: {
+    ...defaultOpenGraph,
+    title: `和合について | ${siteName}`,
+    description: "和合についてページです。",
+    url: "/service/",
+  },
+};
 
 type Props = {
   contents: string;
